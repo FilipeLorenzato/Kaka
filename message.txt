@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Página Bacana</title>
+    <style>
+      /* CSS */
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+        
+      }
+      .question {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+      .button-container {
+        display: flex;
+        justify-content: space-between;
+        width: 200px;
+      }
+      button {
+        font-size: 18px;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      #no {
+        background-color: #ff5555;
+        color: white;
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
+
+
+
+  </head>
+  <body>
+    <div class="container">
+      <div class="question">
+        Você é a pessoa mais incrivel desse munbdo?
+      </div>
+      <div class="button-container">
+        <button id="yes">Sim</button>
+        <button id="no">Não</button>
+      </div>
+    </div>
+
+    <script>
+      /* JavaScript */
+      const yesButton = document.getElementById("yes");
+      const noButton = document.getElementById("no");
+      const body = document.getElementsByTagName("body")[0];
+
+      yesButton.addEventListener("click", function() {
+        window.location.href = "https://www.youtube.com/watch?v=HhoATZ1Imtw";
+      });
+
+      noButton.addEventListener("click", function() {
+        noButton.classList.add("hidden");
+
+        const newButtonContainer = document.createElement("div");
+        newButtonContainer.classList.add("button-container");
+        newButtonContainer.appendChild(noButton);
+
+        body.appendChild(newButtonContainer);
+
+        const screenWidth = window.innerWidth;
+        const screenHeight = window.innerHeight;
+
+        const randomX = Math.floor(Math.random() * (screenWidth - 100));
+        const randomY = Math.floor(Math.random() * (screenHeight - 100));
+
+        noButton.style.position = "absolute";
+        noButton.style.left = randomX + "px";
+        noButton.style.top = randomY + "px";
+
+        noButton.classList.remove("hidden");
+      });
+    </script>
+  </body>
+</html>
